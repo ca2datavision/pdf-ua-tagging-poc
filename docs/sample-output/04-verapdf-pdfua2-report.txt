@@ -1,0 +1,14 @@
+veraPDF, PDF/UA-2 (ISO 14289-2) and Tagged PDF (ISO 32005) validation profile
+
+01-jasper-raw.pdf: NOT compliant, 2810 checks
+  rule 6.2-1 (1x): The document catalog dictionary shall include a MarkInfo dictionary containing an entry, Marked, whose value shall be true  @ root
+  rule 8.11.2-1 (1x): The ViewerPreferences dictionary of the document catalog dictionary shall be present and shall contain at least the DisplayDocTitle key with a value of true, as described in ISO 32000-2:2020, Table 147  @ root
+  rule 8.11.1-2 (1x): The Catalog dictionary of a conforming file shall contain the Metadata key whose value is a metadata stream as defined in ISO 32000-2:2020, 14.3. The metadata stream dictionary shall contain entry Type with value /Metadata and entry Subtype with value /XML  @ root/document[0]
+  rule 6.1-1 (1x): The file version shall be 2.0, specified either in the header or as the value of the Version entry in the document's catalog dictionary  @ root/document[0]
+  rule 8.2.1-1 (1x): The logical structure of the conforming file shall be described by a structure hierarchy rooted in the StructTreeRoot entry of the document catalog dictionary, as described in ISO 32000-2:2020, 14.7  @ root/document[0]
+  rule 8.2.2-1 (930x): Content that is not considered real shall be an artifact  @ root/document[0]/pages[0](15 0 obj PDPage)/contentStream[0](13 0 obj PDSemanticContentStream)/content[0]/contentItem[0]
+  rule 8.8-2 (1x): All destinations whose target lies within the current document shall be structure destinations  @ root/document[0]/pages[1](19 0 obj PDPage)/annots[0](17 0 obj PDLinkAnnot)/A[0]
+
+02-pdfua2.pdf: compliant, 31747 checks
+
+03-pdfua2-signed.pdf: compliant, 31926 checks

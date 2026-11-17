@@ -1,0 +1,15 @@
+veraPDF, PDF/UA-1 (ISO 14289-1) validation profile
+
+01-jasper-raw.pdf: NOT compliant, 1991 checks
+  rule 6.2-1 (1x): The document catalog dictionary shall include a MarkInfo dictionary containing an entry, Marked, whose value shall be true  @ root
+  rule 7.1-10 (1x): The document catalog dictionary shall include a ViewerPreferences dictionary containing a DisplayDocTitle key, whose value shall be true  @ root
+  rule 7.1-8 (1x): The Catalog dictionary of a conforming file shall contain the Metadata key whose value is a metadata stream as defined in ISO 32000-1:2008, 14.3.2. The metadata stream dictionary shall contain entry Type with value /Metadata and entry Subtype with value /XML  @ root/document[0]
+  rule 7.1-11 (1x): The logical structure of the conforming file shall be described by a structure hierarchy rooted in the StructTreeRoot entry of the document catalog dictionary, as described in ISO 32000-1:2008, 14.7  @ root/document[0]
+  rule 7.1-3 (930x): Content shall be marked as Artifact or tagged as real content  @ root/document[0]/pages[0](15 0 obj PDPage)/contentStream[0](13 0 obj PDSemanticContentStream)/content[0]/contentItem[0]
+  rule 7.18.5-1 (7x): Links shall be tagged according to ISO 32000-1:2008, 14.8.4.4.2, Link Element  @ root/document[0]/pages[0](15 0 obj PDPage)/annots[0](11 0 obj PDLinkAnnot)
+  rule 7.18.5-2 (7x): Links shall contain an alternate description via their Contents key as described in ISO 32000-1:2008, 14.9.3  @ root/document[0]/pages[0](15 0 obj PDPage)/annots[0](11 0 obj PDLinkAnnot)
+  rule 7.18.1-2 (7x): An annotation (except Widget annotations or hidden annotations, or those having rectangle outside the crop-box) shall have either Contents key or an Alt entry in the enclosing structure element  @ root/document[0]/pages[0](15 0 obj PDPage)/annots[0](11 0 obj PDLinkAnnot)
+
+02-pdfua.pdf: compliant, 17629 checks
+
+03-pdfua-signed.pdf: compliant, 17780 checks

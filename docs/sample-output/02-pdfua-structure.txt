@@ -1,0 +1,854 @@
+Title:       Service Agreement Summary SA-2026-0042
+Language:    en-GB
+Conformance: PDF/UA-1, PDF 1.7
+
+STRUCTURE TREE (reading order)
+  Document
+    Figure  [page 1]  Alt="Aurora Data Services logo"
+      - (image)
+    Title (mapped to P)  [page 1]
+      - "Service Agreement Summary"
+    P  [page 1]
+      - "This document summarises the managed analytics service that Aurora Data Services SRL provides to the customer. It is also a demonstration of an accessible, tagged PDF that is produced with JasperReports and a PDF/UA post-processing step."
+    H1  [page 1]
+      - "1. About this document"
+    P  [page 1]
+      - "The summary is generated automatically from our contract system. Every heading, paragraph, image and link carries a tag, so that a screen reader can announce the structure of the document and not only its text. Background information on accessible documents is published by the "
+      Link  [page 1]
+        - "W3C "
+        > Link annotation  URI=https://www.w3.org/WAI/fundamentals/accessibility-intro/  Contents="W3C Web Accessibility Initiative (https://www.w3.org/WAI/fundamentals/accessibility-intro/)"
+        - "Web Accessibility Initiative"
+        > Link annotation  URI=https://www.w3.org/WAI/fundamentals/accessibility-intro/  Contents="W3C Web Accessibility Initiative (https://www.w3.org/WAI/fundamentals/accessibility-intro/)"
+      - "."
+    H2  [page 1]
+      - "1.1 How the service works"
+    P  [page 1]
+      - "We collect the operational data of the customer every night, analyse it for trends and anomalies, and deliver a report before the start of the next working day."
+    Figure  [page 1]  Alt="Process diagram with three consecutive steps: 1. Collect, 2. Analyse, 3. Report."
+      - (image)
+    P  [page 1]
+      - "Figure 1: The three steps of the nightly service."
+    H2  [page 1]
+      - "1.2 Service availability"
+    P  [page 1]
+      - "The chart shows the measured availability of the reporting platform for the first six months of 2026. The dashed line marks the agreed target."
+    Figure  [page 1]  Alt="Bar chart of monthly availability in 2026: January 99.20 percent, February 99.60, March 99.90, April 99.70, May 99.95 and June 99.90 percent. The target of 99.50 percent was missed only in January."
+      - (image)
+    BlockQuote
+      P  [page 1]
+        - "“The platform is available at least 99.5 percent of the time in every calendar month.”"
+    P  [page 1]
+      - "Figure 2: Monthly availability, January to June 2026, with the service level commitment quoted next to it."
+    H1  [page 2]
+      - "2. Services and prices"
+    H2  [page 2]
+      - "2.1 Included in every plan"
+    P  [page 2]
+      - "Whatever you order, three things are always part of the service:"
+    L  ListNumbering=Disc
+      LI
+        Lbl  [page 2]
+          - "•"
+        LBody  [page 2]
+          - "nightly collection of your operational data"
+      LI
+        Lbl  [page 2]
+          - "•"
+        LBody  [page 2]
+          - "a report on every working day before 08:00"
+      LI
+        Lbl  [page 2]
+          - "•"
+        LBody  [page 2]
+          - "access to the reporting portal for any number of users"
+    H2  [page 2]
+      - "2.2 How to order"
+    L  ListNumbering=Decimal
+      LI
+        Lbl  [page 2]
+          - "1."
+        LBody  [page 2]
+          - "Choose the services you need from the price list below."
+      LI
+        Lbl  [page 2]
+          - "2."
+        LBody
+          P  [page 2]
+            - "Tell us how you want to receive the reports:"
+          L  ListNumbering=Disc
+            LI
+              Lbl  [page 2]
+                - "–"
+              LBody  [page 2]
+                - "by e-mail, as an accessible PDF"
+            LI
+              Lbl  [page 2]
+                - "–"
+              LBody  [page 2]
+                - "in the reporting portal"
+      LI
+        Lbl  [page 2]
+          - "3."
+        LBody  [page 2]
+          Link  [page 2]
+            - "Sign the agreement in section 4.1"
+            > Link annotation  GoTo page 3  Contents="Sign the agreement in section 4.1"
+    H2  [page 2]
+      - "2.3 Price list"
+    P  [page 2]
+      - "Table 1 lists what each service costs per month. A tick in the column “24/7 support” means that support around the clock is included in the price."
+    Table  Summary="One row per service with its billing unit, whether 24/7 support is included, and the net and gross price per month in euro. The last row holds the totals."
+      Caption  [page 2]
+        - "Table 1: Monthly prices per service"
+      TR
+        TH  Scope=Column  RowSpan=2
+          P  [page 2]
+            - "Service"
+        TH  Scope=Column  RowSpan=2
+          P  [page 2]
+            - "Billing unit"
+        TH  Scope=Column  RowSpan=2
+          P  [page 2]
+            - "24/7 support"
+        TH  Scope=Column  ColSpan=2
+          P  [page 2]
+            - "Price per month in EUR"
+      TR
+        TH  Scope=Column
+          P  [page 2]
+            - "Net"
+        TH  Scope=Column
+          P  [page 2]
+            - "Gross"
+      TR
+        TH  Scope=Row
+          P  [page 2]
+            - "Sales: daily report"
+        TD
+          P  [page 2]
+            - "per site"
+        TD
+          P  [page 2]  ActualText="included"
+            - "✓"
+        TD
+          P  [page 2]
+            - "120.00"
+        TD
+          P  [page 2]
+            - "144.00"
+      TR
+        TH  Scope=Row
+          P  [page 2]
+            - "Sales: trend analysis"
+        TD
+          P  [page 2]
+            - "per site"
+        TD
+          P  [page 2]  ActualText="included"
+            - "✓"
+        TD
+          P  [page 2]
+            - "180.00"
+        TD
+          P  [page 2]
+            - "216.00"
+      TR
+        TH  Scope=Row
+          P  [page 2]
+            - "Sales: anomaly alerts"
+        TD
+          P  [page 2]
+            - "per data source"
+        TD
+          P  [page 2]  ActualText="included"
+            - "✓"
+        TD
+          P  [page 2]
+            - "95.00"
+        TD
+          P  [page 2]
+            - "114.00"
+      TR
+        TH  Scope=Row
+          P  [page 2]
+            - "Sales: management dashboard"
+        TD
+          P  [page 2]
+            - "per user"
+        TD
+          P  [page 2]  ActualText="included"
+            - "✓"
+        TD
+          P  [page 2]
+            - "14.00"
+        TD
+          P  [page 2]
+            - "16.80"
+      TR
+        TH  Scope=Row
+          P  [page 2]
+            - "Stock: daily report"
+        TD
+          P  [page 2]
+            - "per site"
+        TD
+          P  [page 2]  ActualText="not included"
+            - "–"
+        TD
+          P  [page 2]
+            - "125.00"
+        TD
+          P  [page 2]
+            - "150.00"
+      TR
+        TH  Scope=Row
+          P  [page 2]
+            - "Stock: trend analysis"
+        TD
+          P  [page 2]
+            - "per site"
+        TD
+          P  [page 2]  ActualText="not included"
+            - "–"
+        TD
+          P  [page 2]
+            - "185.00"
+        TD
+          P  [page 2]
+            - "222.00"
+      TR
+        TH  Scope=Row
+          P  [page 2]
+            - "Stock: anomaly alerts"
+        TD
+          P  [page 2]
+            - "per data source"
+        TD
+          P  [page 2]  ActualText="included"
+            - "✓"
+        TD
+          P  [page 2]
+            - "100.00"
+        TD
+          P  [page 2]
+            - "120.00"
+      TR
+        TH  Scope=Row
+          P  [page 2]
+            - "Stock: management dashboard"
+        TD
+          P  [page 2]
+            - "per user"
+        TD
+          P  [page 2]  ActualText="not included"
+            - "–"
+        TD
+          P  [page 2]
+            - "19.00"
+        TD
+          P  [page 2]
+            - "22.80"
+      TR
+        TH  Scope=Row
+          P  [page 2]
+            - "Purchasing: daily report"
+        TD
+          P  [page 2]
+            - "per site"
+        TD
+          P  [page 2]  ActualText="not included"
+            - "–"
+        TD
+          P  [page 2]
+            - "130.00"
+        TD
+          P  [page 2]
+            - "156.00"
+      TR
+        TH  Scope=Row
+          P  [page 2]
+            - "Purchasing: trend analysis"
+        TD
+          P  [page 2]
+            - "per site"
+        TD
+          P  [page 2]  ActualText="not included"
+            - "–"
+        TD
+          P  [page 2]
+            - "190.00"
+        TD
+          P  [page 2]
+            - "228.00"
+      TR
+        TH  Scope=Row
+          P  [page 2]
+            - "Purchasing: anomaly alerts"
+        TD
+          P  [page 2]
+            - "per data source"
+        TD
+          P  [page 2]  ActualText="included"
+            - "✓"
+        TD
+          P  [page 2]
+            - "105.00"
+        TD
+          P  [page 2]
+            - "126.00"
+      TR
+        TH  Scope=Row
+          P  [page 2]
+            - "Purchasing: management dashboard"
+        TD
+          P  [page 2]
+            - "per user"
+        TD
+          P  [page 2]  ActualText="not included"
+            - "–"
+        TD
+          P  [page 2]
+            - "24.00"
+        TD
+          P  [page 2]
+            - "28.80"
+      TR
+        TH  Scope=Row
+          P  [page 2]
+            - "Production: daily report"
+        TD
+          P  [page 2]
+            - "per site"
+        TD
+          P  [page 2]  ActualText="included"
+            - "✓"
+        TD
+          P  [page 2]
+            - "135.00"
+        TD
+          P  [page 2]
+            - "162.00"
+      TR
+        TH  Scope=Row
+          P  [page 2]
+            - "Production: trend analysis"
+        TD
+          P  [page 2]
+            - "per site"
+        TD
+          P  [page 2]  ActualText="included"
+            - "✓"
+        TD
+          P  [page 2]
+            - "195.00"
+        TD
+          P  [page 2]
+            - "234.00"
+      TR
+        TH  Scope=Row
+          P  [page 2]
+            - "Production: anomaly alerts"
+        TD
+          P  [page 2]
+            - "per data source"
+        TD
+          P  [page 2]  ActualText="included"
+            - "✓"
+        TD
+          P  [page 2]
+            - "110.00"
+        TD
+          P  [page 2]
+            - "132.00"
+      TR
+        TH  Scope=Row
+          P  [page 2]
+            - "Production: management dashboard"
+        TD
+          P  [page 2]
+            - "per user"
+        TD
+          P  [page 2]  ActualText="included"
+            - "✓"
+        TD
+          P  [page 2]
+            - "29.00"
+        TD
+          P  [page 2]
+            - "34.80"
+      TR
+        TH  Scope=Row
+          P  [page 2]
+            - "Logistics: daily report"
+        TD
+          P  [page 2]
+            - "per site"
+        TD
+          P  [page 2]  ActualText="not included"
+            - "–"
+        TD
+          P  [page 2]
+            - "140.00"
+        TD
+          P  [page 2]
+            - "168.00"
+      TR
+        TH  Scope=Row
+          P  [page 2]
+            - "Logistics: trend analysis"
+        TD
+          P  [page 2]
+            - "per site"
+        TD
+          P  [page 2]  ActualText="not included"
+            - "–"
+        TD
+          P  [page 2]
+            - "200.00"
+        TD
+          P  [page 2]
+            - "240.00"
+      TR
+        TH  Scope=Row
+          P  [page 2]
+            - "Logistics: anomaly alerts"
+        TD
+          P  [page 2]
+            - "per data source"
+        TD
+          P  [page 2]  ActualText="included"
+            - "✓"
+        TD
+          P  [page 2]
+            - "115.00"
+        TD
+          P  [page 2]
+            - "138.00"
+      TR
+        TH  Scope=Row
+          P  [page 3]
+            - "Logistics: management dashboard"
+        TD
+          P  [page 3]
+            - "per user"
+        TD
+          P  [page 3]  ActualText="not included"
+            - "–"
+        TD
+          P  [page 3]
+            - "34.00"
+        TD
+          P  [page 3]
+            - "40.80"
+      TR
+        TH  Scope=Row
+          P  [page 3]
+            - "Finance: daily report"
+        TD
+          P  [page 3]
+            - "per site"
+        TD
+          P  [page 3]  ActualText="not included"
+            - "–"
+        TD
+          P  [page 3]
+            - "145.00"
+        TD
+          P  [page 3]
+            - "174.00"
+      TR
+        TH  Scope=Row
+          P  [page 3]
+            - "Finance: trend analysis"
+        TD
+          P  [page 3]
+            - "per site"
+        TD
+          P  [page 3]  ActualText="not included"
+            - "–"
+        TD
+          P  [page 3]
+            - "205.00"
+        TD
+          P  [page 3]
+            - "246.00"
+      TR
+        TH  Scope=Row
+          P  [page 3]
+            - "Finance: anomaly alerts"
+        TD
+          P  [page 3]
+            - "per data source"
+        TD
+          P  [page 3]  ActualText="included"
+            - "✓"
+        TD
+          P  [page 3]
+            - "120.00"
+        TD
+          P  [page 3]
+            - "144.00"
+      TR
+        TH  Scope=Row
+          P  [page 3]
+            - "Finance: management dashboard"
+        TD
+          P  [page 3]
+            - "per user"
+        TD
+          P  [page 3]  ActualText="not included"
+            - "–"
+        TD
+          P  [page 3]
+            - "39.00"
+        TD
+          P  [page 3]
+            - "46.80"
+      TR
+        TH  Scope=Row
+          P  [page 3]
+            - "Staff: daily report"
+        TD
+          P  [page 3]
+            - "per site"
+        TD
+          P  [page 3]  ActualText="included"
+            - "✓"
+        TD
+          P  [page 3]
+            - "150.00"
+        TD
+          P  [page 3]
+            - "180.00"
+      TR
+        TH  Scope=Row
+          P  [page 3]
+            - "Staff: trend analysis"
+        TD
+          P  [page 3]
+            - "per site"
+        TD
+          P  [page 3]  ActualText="included"
+            - "✓"
+        TD
+          P  [page 3]
+            - "210.00"
+        TD
+          P  [page 3]
+            - "252.00"
+      TR
+        TH  Scope=Row
+          P  [page 3]
+            - "Staff: anomaly alerts"
+        TD
+          P  [page 3]
+            - "per data source"
+        TD
+          P  [page 3]  ActualText="included"
+            - "✓"
+        TD
+          P  [page 3]
+            - "125.00"
+        TD
+          P  [page 3]
+            - "150.00"
+      TR
+        TH  Scope=Row
+          P  [page 3]
+            - "Staff: management dashboard"
+        TD
+          P  [page 3]
+            - "per user"
+        TD
+          P  [page 3]  ActualText="included"
+            - "✓"
+        TD
+          P  [page 3]
+            - "44.00"
+        TD
+          P  [page 3]
+            - "52.80"
+      TR
+        TH  Scope=Row
+          P  [page 3]
+            - "Total for all services"
+        TD
+        TD
+        TD
+          P  [page 3]
+            - "3,283.00"
+        TD
+          P  [page 3]
+            - "3,939.60"
+    Note  [page 3]  ID=note-0001
+      - "Note: gross prices include value added tax at 20 percent."
+    H1  [page 3]
+      - "3. Contact"
+    H2  [page 3]
+      - "3.1 How to reach us"
+    P  [page 3]
+      - "Our support team answers on working days between 09:00 and 17:00. Open a ticket on "
+      Link  [page 3]
+        - "www.example.com/support"
+        > Link annotation  URI=https://www.example.com/support  Contents="www.example.com/support"
+      - ", write to "
+      Link  [page 3]
+        - "support@example.com"
+        > Link annotation  URI=mailto:support@example.com  Contents="support@example.com"
+      - " or call "
+      Link  [page 3]
+        - "+44 20 7946 0142"
+        > Link annotation  URI=tel:+442079460142  Contents="+44 20 7946 0142"
+      - "."
+    P  [page 3]
+      Link  [page 3]
+        - "Read the full terms and conditions of the service"
+        > Link annotation  URI=https://www.example.com/terms  Contents="Read the full terms and conditions of the service (https://www.example.com/terms)"
+    P  [page 3]  Lang=ro-RO
+      - "Echipa noastră de asistență vă răspunde și în limba română."
+    H1  [page 3]
+      - "4. Acceptance"
+    P  [page 3]
+      - "The agreement enters into force when both parties have signed this summary electronically. Each signature field below is preceded by a statement of what the signature confirms."
+    H2  [page 3]
+      - "4.1 Signatures"
+    P  [page 3]
+      - "Customer signature. By signing in the field below you confirm that you have read this summary and that you accept Service Agreement SA-2026-0042."
+    Form  [page 3]
+      > Widget annotation  FieldType=Sig  Name=CustomerSignature  Description(TU)="Customer signature. By signing here you confirm that you have read this summary and that you accept Service Agreement SA-2026-0042."
+    P  [page 3]
+      - "Signed by the authorised representative of the customer."
+    P  [page 3]
+      - "Provider signature. By signing in the field below Aurora Data Services SRL confirms that it will deliver the service as described in Service Agreement SA-2026-0042."
+    Form  [page 3]
+      > Widget annotation  FieldType=Sig  Name=ProviderSignature  Description(TU)="Provider signature. By signing here Aurora Data Services SRL confirms that it will deliver the service as described in Service Agreement SA-2026-0042."
+    P  [page 3]
+      - "Signed by the authorised representative of the provider."
+
+BOOKMARKS
+  1. About this document  -> page 1
+    1.1 How the service works  -> page 1
+    1.2 Service availability  -> page 1
+  2. Services and prices  -> page 2
+    2.1 Included in every plan  -> page 2
+    2.2 How to order  -> page 2
+    2.3 Price list  -> page 2
+  3. Contact  -> page 3
+    3.1 How to reach us  -> page 3
+  4. Acceptance  -> page 3
+    4.1 Signatures  -> page 3
+
+ARTIFACTS (not presented by assistive technology)
+  Page 1
+    Pagination/Watermark: (image)
+    Pagination/Header: (graphics)
+    Pagination/Header: "Aurora Data Services SRL"
+    Pagination/Header: "Service Agreement SA-2026-0042 · Summary for the customer"
+    Pagination/Header: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Pagination/Footer: (graphics)
+    Pagination/Footer: "Aurora Data Services SRL · Confidential"
+    Pagination/Footer: "Page 1 of"
+    Pagination/Footer: "3"
+  Page 2
+    Pagination/Watermark: (image)
+    Pagination/Header: (image)
+    Pagination/Header: (graphics)
+    Pagination/Header: "Aurora Data Services SRL"
+    Pagination/Header: "Service Agreement SA-2026-0042 · Summary for the customer"
+    Pagination/Header: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Pagination/Footer: (graphics)
+    Pagination/Footer: "Aurora Data Services SRL · Confidential"
+    Pagination/Footer: "Page 2 of"
+    Pagination/Footer: "3"
+  Page 3
+    Pagination/Watermark: (image)
+    Pagination/Header: (image)
+    Pagination/Header: (graphics)
+    Pagination/Header: "Aurora Data Services SRL"
+    Pagination/Header: "Service Agreement SA-2026-0042 · Summary for the customer"
+    Pagination/Header: (graphics)
+    Pagination: (graphics)
+    Pagination: "Service"
+    Pagination: (graphics)
+    Layout: (graphics)
+    Pagination: (graphics)
+    Pagination: "Billing unit"
+    Pagination: (graphics)
+    Layout: (graphics)
+    Pagination: (graphics)
+    Pagination: "24/7support"
+    Pagination: (graphics)
+    Layout: (graphics)
+    Pagination: (graphics)
+    Pagination: "Price per month in EUR"
+    Pagination: (graphics)
+    Pagination: "Net"
+    Pagination: (graphics)
+    Layout: (graphics)
+    Pagination: (graphics)
+    Pagination: "Gross"
+    Pagination: (graphics)
+    Layout: (graphics)
+    Pagination: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Layout: (graphics)
+    Pagination/Footer: (graphics)
+    Pagination/Footer: "Aurora Data Services SRL · Confidential"
+    Pagination/Footer: "Page 3 of"
+    Pagination/Footer: "3"
