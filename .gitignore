@@ -1,0 +1,16 @@
+# Build output (the generated PDFs are in target/pdf; a committed copy is in docs/sample-output)
+target/
+out/
+*.class
+
+# IDE and OS files
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+.DS_Store
+
+# Local agent settings (the shared agent guide is AGENTS.md)
+.claude/settings.local.json

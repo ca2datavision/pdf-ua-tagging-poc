@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>ro.ca2datavision</groupId>
+    <artifactId>pdf-ua-tagging-poc</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>PDF/UA tagging proof of concept</name>
+    <description>
+        JasperReports (Community Edition) generates an untagged PDF; a PDFBox based
+        post-processor turns it into a tagged PDF/UA-1 document.
+    </description>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <properties>
+        <maven.compiler.release>17</maven.compiler.release>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <jasperreports.version>7.1.1</jasperreports.version>
+        <openpdf.version>1.3.43</openpdf.version>
+        <pdfbox.version>3.0.8</pdfbox.version>
+        <bouncycastle.version>1.87</bouncycastle.version>
+        <junit.version>6.1.3</junit.version>
+        <verapdf.version>1.30.4</verapdf.version>
+
+        <!-- The file opened by "mvn exec:java@pdf-debugger"; override with -Dpdf=... -->
+        <pdf>${project.build.directory}/pdf/02-pdfua.pdf</pdf>
+    </properties>
+
+    <dependencies>
+        <!-- Report engine: template compilation and filling -->
+        <dependency>
+            <groupId>net.sf.jasperreports</groupId>
+            <artifactId>jasperreports</artifactId>
+            <version>${jasperreports.version}</version>
+        </dependency>
+        <!-- PDF exporter (OpenPDF based). Community Edition: no PDF tagging. -->
+        <dependency>
+            <groupId>net.sf.jasperreports</groupId>
+            <artifactId>jasperreports-pdf</artifactId>
+            <version>${jasperreports.version}</version>
+            <exclusions>
+                <!-- jasperreports-pdf asks for the Jaspersoft build of OpenPDF (1.3.43.jaspersoft.2),
+                     which is not on Maven Central and is only needed by the Professional tagger.
+                     The stock OpenPDF below is officially supported since JasperReports 7.0.8. -->
+                <exclusion>
+                    <groupId>com.github.librepdf</groupId>
+                    <artifactId>openpdf</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.github.librepdf</groupId>
+            <artifactId>openpdf</artifactId>
+            <version>${openpdf.version}</version>
+        </dependency>
+        <!-- Compiles the JRXML expressions at runtime -->
+        <dependency>
+            <groupId>net.sf.jasperreports</groupId>
+            <artifactId>jasperreports-jdt</artifactId>
+            <version>${jasperreports.version}</version>
+        </dependency>
+        <!-- DejaVu font extension: fonts get embedded, which PDF/UA requires -->
+        <dependency>
+            <groupId>net.sf.jasperreports</groupId>
+            <artifactId>jasperreports-fonts</artifactId>
+            <version>${jasperreports.version}</version>
+        </dependency>
+
+        <!-- Post-processing: tagging, artifacts, links, signature fields, metadata -->
+        <dependency>
+            <groupId>org.apache.pdfbox</groupId>
+            <artifactId>pdfbox</artifactId>
+            <version>${pdfbox.version}</version>
+        </dependency>
+
+        <!-- Digital signatures: builds the CMS signature container that PDFBox embeds -->
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcpkix-jdk18on</artifactId>
+            <version>${bouncycastle.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- veraPDF: machine-checkable PDF/UA-1 validation (Matterhorn Protocol), test only -->
+        <dependency>
+            <groupId>org.verapdf</groupId>
+            <artifactId>validation-model</artifactId>
+            <version>${verapdf.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.16.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.6.1</version>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.5.1</version>
+                <configuration>
+                    <mainClass>ro.ca2datavision.pdfua.PdfUaDemo</mainClass>
+                </configuration>
+                <executions>
+                    <!-- mvn exec:java@pdf-debugger [-Dpdf=some.pdf]
+                         Opens a PDF in the PDFBox PDFDebugger, a viewer for the internal objects of
+                         a PDF: structure tree, parent tree, marked content in the page streams. -->
+                    <execution>
+                        <id>pdf-debugger</id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>org.apache.pdfbox.debugger.PDFDebugger</mainClass>
+                            <includeProjectDependencies>false</includeProjectDependencies>
+                            <includePluginDependencies>true</includePluginDependencies>
+                            <arguments>
+                                <argument>${pdf}</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <!-- A development tool only: on the classpath of the plugin, not of the project -->
+                    <dependency>
+                        <groupId>org.apache.pdfbox</groupId>
+                        <artifactId>pdfbox-debugger</artifactId>
+                        <version>${pdfbox.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
+</project>
