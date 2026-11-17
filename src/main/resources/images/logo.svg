@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="132" height="40" viewBox="0 0 132 40">
+  <!-- Aurora Data Services logo: rising sun over three ascending data bars. Shapes only, no text. -->
+  <rect x="0" y="0" width="40" height="40" rx="6" fill="#0B3C5D"/>
+  <path d="M6 30 A14 14 0 0 1 34 30 Z" fill="#F2A900"/>
+  <rect x="6" y="30" width="28" height="3" fill="#FFFFFF"/>
+  <rect x="50" y="24" width="14" height="12" fill="#0B3C5D"/>
+  <rect x="70" y="15" width="14" height="21" fill="#1D6FA5"/>
+  <rect x="90" y="6" width="14" height="30" fill="#F2A900"/>
+  <rect x="110" y="18" width="14" height="18" fill="#0B3C5D"/>
+</svg>

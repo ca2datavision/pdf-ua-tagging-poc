@@ -1,0 +1,61 @@
+<jasperReport name="TabularReport" language="java" pageWidth="595" pageHeight="842" columnWidth="495" leftMargin="50" rightMargin="50" topMargin="36" bottomMargin="36">
+	<!--
+		A classic tabular report for the tests: column header band, one detail band per record,
+		several pages. Variant 1: only the cells are marked, with pdfua.role. Rows and the table are worked out from them.
+	-->
+	<property name="net.sf.jasperreports.export.pdf.metadata.title" value="Order lines"/>
+	<property name="net.sf.jasperreports.export.pdf.tag.language" value="en-GB"/>
+	<style name="Base" default="true" fontName="DejaVu Sans" fontSize="10.0"/>
+	<title height="40">
+		<element kind="staticText" x="0" y="0" width="495" height="26" fontSize="16.0" bold="true">
+			<text><![CDATA[Order lines]]></text>
+			<property name="pdfua.role" value="H1"/>
+		</element>
+	</title>
+	<columnHeader height="22">
+		<element kind="staticText" x="0" y="0" width="60" height="18" bold="true">
+			<text><![CDATA[No.]]></text>
+			<property name="pdfua.role" value="TH"/>
+		</element>
+		<element kind="staticText" x="60" y="0" width="315" height="18" bold="true">
+			<text><![CDATA[Item]]></text>
+			<property name="pdfua.role" value="TH"/>
+		</element>
+		<element kind="staticText" x="375" y="0" width="120" height="18" bold="true" hTextAlign="Right">
+			<text><![CDATA[Quantity]]></text>
+			<property name="pdfua.role" value="TH"/>
+		</element>
+		<element kind="line" x="0" y="19" width="495" height="1"/>
+	</columnHeader>
+	<detail>
+		<band height="18">
+			<element kind="textField" x="0" y="0" width="60" height="16">
+				<expression><![CDATA[String.valueOf($V{REPORT_COUNT})]]></expression>
+				<property name="pdfua.role" value="TD"/>
+			</element>
+			<element kind="textField" x="60" y="0" width="315" height="16">
+				<expression><![CDATA["Item " + $V{REPORT_COUNT}]]></expression>
+				<property name="pdfua.role" value="TD"/>
+			</element>
+			<element kind="textField" x="375" y="0" width="120" height="16" hTextAlign="Right">
+				<expression><![CDATA[String.valueOf($V{REPORT_COUNT} * 3)]]></expression>
+				<property name="pdfua.role" value="TD"/>
+			</element>
+		</band>
+	</detail>
+	<pageFooter height="20">
+		<element kind="textField" x="0" y="4" width="495" height="14" hTextAlign="Right">
+			<expression><![CDATA["Page " + $V{PAGE_NUMBER}]]></expression>
+		</element>
+	</pageFooter>
+	<summary height="48">
+		<element kind="staticText" x="0" y="8" width="495" height="16">
+			<text><![CDATA[End of the list.]]></text>
+		</element>
+		<!-- a link to a page, not to an anchor: for PDF/UA-2 it leads to the first element of that page -->
+		<element kind="textField" x="0" y="28" width="495" height="16" forecolor="#0645AD" underline="true" linkType="LocalPage">
+			<expression><![CDATA["Back to the first page"]]></expression>
+			<hyperlinkPageExpression><![CDATA[1]]></hyperlinkPageExpression>
+		</element>
+	</summary>
+</jasperReport>

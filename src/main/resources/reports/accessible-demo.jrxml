@@ -1,0 +1,498 @@
+<jasperReport name="AccessibleDemo" language="java" pageWidth="595" pageHeight="842" columnWidth="495" leftMargin="50" rightMargin="50" topMargin="36" bottomMargin="36">
+	<!--
+		Accessibility hints used by this template (read by JasperLayoutExtractor, applied by PdfUaPostProcessor):
+
+		Report level
+		  net.sf.jasperreports.export.pdf.metadata.title   document title (PDF/UA: mandatory, shown in the title bar)
+		  net.sf.jasperreports.export.pdf.tag.language     natural language of the document
+
+		  net.sf.jasperreports.components.table.accessible   the table component marks its rows and cells itself
+
+		Element level
+		  pdfua.role                 structure type: Title, H1..H6, P, Figure, BlockQuote, Caption, Note,
+		                             TH, TD, Lbl, LBody, ... or Artifact
+		  pdfua.alt                  alternate text of a Figure
+		  pdfua.signature.name       turns the element into a placeholder for a signature field with this name
+		  pdfua.signature.description  what the signer is signing; read by screen readers when the field gets focus
+		  pdfua.table.summary        what a table is about, for readers who cannot see its layout
+		  pdfua.artifact.type/.subtype  kind of artifact, for example Pagination / Watermark
+		  net.sf.jasperreports.export.pdf.tag.language              language of one element
+		  net.sf.jasperreports.export.pdf.tag.attribute.ActualText  text read instead of the content
+
+		Defaults when an element has no pdfua.role:
+		  text in the detail/title/summary bands   P
+		  images with pdfua.alt                    Figure
+		  everything in pageHeader / pageFooter / background   Artifact (pagination, background)
+		  lines, rectangles, borders, backgrounds  Artifact (layout)
+
+		Nesting is worked out from the roles: cells (TH, TD) at the same height are a row, consecutive
+		rows are a table; a label (Lbl) and a body (LBody) are a list item, consecutive items are a list.
+	-->
+	<property name="net.sf.jasperreports.export.pdf.metadata.title" value="Service Agreement Summary SA-2026-0042"/>
+	<property name="net.sf.jasperreports.export.pdf.metadata.author" value="Aurora Data Services SRL"/>
+	<property name="net.sf.jasperreports.export.pdf.metadata.subject" value="PDF/UA demonstration document generated with JasperReports"/>
+	<property name="net.sf.jasperreports.export.pdf.tag.language" value="en-GB"/>
+	<property name="net.sf.jasperreports.components.table.accessible" value="true"/>
+
+	<style name="Base" default="true" fontName="DejaVu Sans" fontSize="10.0" forecolor="#1A1A1A"/>
+	<style name="Title" style="Base" fontSize="22.0" bold="true" forecolor="#0B3C5D"/>
+	<style name="H1" style="Base" fontSize="15.0" bold="true" forecolor="#0B3C5D"/>
+	<style name="H2" style="Base" fontSize="12.0" bold="true" forecolor="#0B3C5D"/>
+	<style name="Small" style="Base" fontSize="8.0" forecolor="#333333"/>
+	<style name="TableHeader" style="Base" mode="Opaque" backcolor="#E4ECF2" bold="true" fontSize="9.0">
+		<box>
+			<pen lineWidth="0.5" lineColor="#7A7A7A"/>
+		</box>
+	</style>
+	<style name="TableCell" style="Base" fontSize="9.0">
+		<box>
+			<pen lineWidth="0.5" lineColor="#7A7A7A"/>
+		</box>
+	</style>
+
+	<!-- rows of the price table (section 2.3) -->
+	<dataset name="Prices">
+		<field name="service" class="java.lang.String"/>
+		<field name="unit" class="java.lang.String"/>
+		<field name="support" class="java.lang.Boolean"/>
+		<field name="net" class="java.math.BigDecimal"/>
+		<variable name="netTotal" class="java.math.BigDecimal" calculation="Sum">
+			<expression><![CDATA[$F{net}]]></expression>
+		</variable>
+	</dataset>
+	<parameter name="PRICES" class="java.util.Collection"/>
+
+	<background height="770">
+		<!-- Watermark behind every page: an artifact. Without the two properties it would be an
+		     artifact of the type Background, the default for this band. -->
+		<element kind="image" x="0" y="0" width="495" height="770">
+			<expression><![CDATA["images/watermark.svg"]]></expression>
+			<property name="pdfua.artifact.type" value="Pagination"/>
+			<property name="pdfua.artifact.subtype" value="Watermark"/>
+		</element>
+	</background>
+
+	<pageHeader height="60">
+		<!-- The logo is real content exactly once, on the first page. On every following page it is
+		     a repeated decoration and must not be announced again, so it becomes an artifact. -->
+		<element kind="image" x="0" y="0" width="132" height="40">
+			<expression><![CDATA["images/logo.svg"]]></expression>
+			<property name="pdfua.alt" value="Aurora Data Services logo"/>
+			<propertyExpression name="pdfua.role"><![CDATA[$V{PAGE_NUMBER} == 1 ? "Figure" : "Artifact"]]></propertyExpression>
+		</element>
+		<!-- vertical separator: artifact -->
+		<element kind="line" x="144" y="2" width="1" height="36">
+			<pen lineWidth="1.0" lineColor="#7A7A7A"/>
+		</element>
+		<!-- running header text: pagination artifact (default for the pageHeader band) -->
+		<element kind="staticText" x="156" y="3" width="339" height="16" bold="true" forecolor="#0B3C5D" fontSize="11.0">
+			<text><![CDATA[Aurora Data Services SRL]]></text>
+		</element>
+		<element kind="staticText" x="156" y="22" width="339" height="14" style="Small">
+			<text><![CDATA[Service Agreement SA-2026-0042 · Summary for the customer]]></text>
+		</element>
+		<!-- horizontal rule under the header: artifact -->
+		<element kind="line" x="0" y="48" width="495" height="1">
+			<pen lineWidth="1.5" lineColor="#0B3C5D"/>
+		</element>
+	</pageHeader>
+
+	<detail>
+		<band height="96">
+			<element kind="staticText" x="0" y="6" width="495" height="32" style="Title">
+				<text><![CDATA[Service Agreement Summary]]></text>
+				<property name="pdfua.role" value="Title"/>
+			</element>
+			<element kind="staticText" x="0" y="46" width="495" height="44">
+				<text><![CDATA[This document summarises the managed analytics service that Aurora Data Services SRL provides to the customer. It is also a demonstration of an accessible, tagged PDF that is produced with JasperReports and a PDF/UA post-processing step.]]></text>
+			</element>
+		</band>
+
+		<band height="98">
+			<element kind="staticText" x="0" y="4" width="495" height="22" style="H1">
+				<text><![CDATA[1. About this document]]></text>
+				<property name="pdfua.role" value="H1"/>
+			</element>
+			<!-- inline hyperlink inside a paragraph: P > Link -->
+			<element kind="staticText" x="0" y="32" width="495" height="60" markup="styled">
+				<text><![CDATA[The summary is generated automatically from our contract system. Every heading, paragraph, image and link carries a tag, so that a screen reader can announce the structure of the document and not only its text. Background information on accessible documents is published by the <a type="Reference" href="https://www.w3.org/WAI/fundamentals/accessibility-intro/"><style forecolor="#0645AD" isUnderline="true">W3C Web Accessibility Initiative</style></a>.]]></text>
+			</element>
+		</band>
+
+		<band height="170">
+			<element kind="staticText" x="0" y="2" width="495" height="18" style="H2">
+				<text><![CDATA[1.1 How the service works]]></text>
+				<property name="pdfua.role" value="H2"/>
+			</element>
+			<element kind="staticText" x="0" y="24" width="495" height="32">
+				<text><![CDATA[We collect the operational data of the customer every night, analyse it for trends and anomalies, and deliver a report before the start of the next working day.]]></text>
+			</element>
+			<!-- vector image (SVG): Figure with alternate text -->
+			<element kind="image" x="0" y="60" width="495" height="80">
+				<expression><![CDATA["images/process.svg"]]></expression>
+				<property name="pdfua.alt" value="Process diagram with three consecutive steps: 1. Collect, 2. Analyse, 3. Report."/>
+			</element>
+			<element kind="staticText" x="0" y="144" width="495" height="14" style="Small">
+				<text><![CDATA[Figure 1: The three steps of the nightly service.]]></text>
+			</element>
+		</band>
+
+		<band height="236">
+			<element kind="staticText" x="0" y="2" width="495" height="18" style="H2">
+				<text><![CDATA[1.2 Service availability]]></text>
+				<property name="pdfua.role" value="H2"/>
+			</element>
+			<element kind="staticText" x="0" y="24" width="495" height="32">
+				<text><![CDATA[The chart shows the measured availability of the reporting platform for the first six months of 2026. The dashed line marks the agreed target.]]></text>
+			</element>
+			<!-- raster image (PNG): Figure with alternate text -->
+			<element kind="image" x="0" y="62" width="300" height="138">
+				<expression><![CDATA["images/availability-chart.png"]]></expression>
+				<property name="pdfua.alt" value="Bar chart of monthly availability in 2026: January 99.20 percent, February 99.60, March 99.90, April 99.70, May 99.95 and June 99.90 percent. The target of 99.50 percent was missed only in January."/>
+			</element>
+			<!-- a frame with a role groups its children: BlockQuote > P. The vertical bar is an artifact. -->
+			<element kind="frame" x="316" y="62" width="179" height="138">
+				<property name="pdfua.role" value="BlockQuote"/>
+				<element kind="line" x="0" y="0" width="1" height="138">
+					<pen lineWidth="3.0" lineColor="#F2A900"/>
+				</element>
+				<element kind="staticText" x="14" y="4" width="165" height="130" italic="true" fontSize="11.0">
+					<text><![CDATA[“The platform is available at least 99.5 percent of the time in every calendar month.”]]></text>
+				</element>
+			</element>
+			<element kind="staticText" x="0" y="206" width="495" height="14" style="Small">
+				<text><![CDATA[Figure 2: Monthly availability, January to June 2026, with the service level commitment quoted next to it.]]></text>
+			</element>
+		</band>
+
+		<band height="260">
+			<!-- everything below starts on the second page -->
+			<element kind="break" x="0" y="0" width="495" height="1"/>
+			<element kind="staticText" x="0" y="6" width="495" height="22" style="H1">
+				<text><![CDATA[2. Services and prices]]></text>
+				<property name="pdfua.role" value="H1"/>
+			</element>
+			<element kind="staticText" x="0" y="34" width="495" height="18" style="H2">
+				<text><![CDATA[2.1 Included in every plan]]></text>
+				<property name="pdfua.role" value="H2"/>
+			</element>
+			<element kind="staticText" x="0" y="56" width="495" height="16">
+				<text><![CDATA[Whatever you order, three things are always part of the service:]]></text>
+			</element>
+			<!-- A list: every item is a label (Lbl) and a body (LBody). The item (LI) and the list (L)
+			     around them are added automatically. -->
+			<element kind="staticText" x="8" y="76" width="14" height="16">
+				<text><![CDATA[•]]></text>
+				<property name="pdfua.role" value="Lbl"/>
+			</element>
+			<element kind="staticText" x="24" y="76" width="471" height="16">
+				<text><![CDATA[nightly collection of your operational data]]></text>
+				<property name="pdfua.role" value="LBody"/>
+			</element>
+			<element kind="staticText" x="8" y="94" width="14" height="16">
+				<text><![CDATA[•]]></text>
+				<property name="pdfua.role" value="Lbl"/>
+			</element>
+			<element kind="staticText" x="24" y="94" width="471" height="16">
+				<text><![CDATA[a report on every working day before 08:00]]></text>
+				<property name="pdfua.role" value="LBody"/>
+			</element>
+			<element kind="staticText" x="8" y="112" width="14" height="16">
+				<text><![CDATA[•]]></text>
+				<property name="pdfua.role" value="Lbl"/>
+			</element>
+			<element kind="staticText" x="24" y="112" width="471" height="16">
+				<text><![CDATA[access to the reporting portal for any number of users]]></text>
+				<property name="pdfua.role" value="LBody"/>
+			</element>
+
+			<element kind="staticText" x="0" y="138" width="495" height="18" style="H2">
+				<text><![CDATA[2.2 How to order]]></text>
+				<property name="pdfua.role" value="H2"/>
+			</element>
+			<!-- A numbered list. The body of the second item is a frame, because it holds a
+			     paragraph and a list of its own: LBody > P + L. -->
+			<element kind="staticText" x="8" y="160" width="14" height="16">
+				<text><![CDATA[1.]]></text>
+				<property name="pdfua.role" value="Lbl"/>
+			</element>
+			<element kind="staticText" x="24" y="160" width="471" height="16">
+				<text><![CDATA[Choose the services you need from the price list below.]]></text>
+				<property name="pdfua.role" value="LBody"/>
+			</element>
+			<element kind="staticText" x="8" y="178" width="14" height="16">
+				<text><![CDATA[2.]]></text>
+				<property name="pdfua.role" value="Lbl"/>
+			</element>
+			<element kind="frame" x="24" y="178" width="471" height="52">
+				<property name="pdfua.role" value="LBody"/>
+				<element kind="staticText" x="0" y="0" width="471" height="16">
+					<text><![CDATA[Tell us how you want to receive the reports:]]></text>
+				</element>
+				<element kind="staticText" x="6" y="18" width="12" height="16">
+					<text><![CDATA[–]]></text>
+					<property name="pdfua.role" value="Lbl"/>
+				</element>
+				<element kind="staticText" x="20" y="18" width="451" height="16">
+					<text><![CDATA[by e-mail, as an accessible PDF]]></text>
+					<property name="pdfua.role" value="LBody"/>
+				</element>
+				<element kind="staticText" x="6" y="36" width="12" height="16">
+					<text><![CDATA[–]]></text>
+					<property name="pdfua.role" value="Lbl"/>
+				</element>
+				<element kind="staticText" x="20" y="36" width="451" height="16">
+					<text><![CDATA[in the reporting portal]]></text>
+					<property name="pdfua.role" value="LBody"/>
+				</element>
+			</element>
+			<element kind="staticText" x="8" y="234" width="14" height="16">
+				<text><![CDATA[3.]]></text>
+				<property name="pdfua.role" value="Lbl"/>
+			</element>
+			<!-- A link to a place in this document. JasperReports supports it on a whole element only,
+			     not inside styled text. Here the element is also the body of the list item. -->
+			<element kind="textField" x="24" y="234" width="471" height="16" forecolor="#0645AD" underline="true" linkType="LocalAnchor">
+				<expression><![CDATA["Sign the agreement in section 4.1"]]></expression>
+				<hyperlinkAnchorExpression><![CDATA["signatures"]]></hyperlinkAnchorExpression>
+				<property name="pdfua.role" value="LBody"/>
+			</element>
+		</band>
+
+		<band height="78">
+			<element kind="staticText" x="0" y="4" width="495" height="18" style="H2">
+				<text><![CDATA[2.3 Price list]]></text>
+				<property name="pdfua.role" value="H2"/>
+			</element>
+			<element kind="staticText" x="0" y="26" width="495" height="30">
+				<text><![CDATA[Table 1 lists what each service costs per month. A tick in the column “24/7 support” means that support around the clock is included in the price.]]></text>
+			</element>
+			<!-- The caption of the table that follows: it becomes the first child of the Table. -->
+			<element kind="staticText" x="0" y="62" width="495" height="14" style="Small">
+				<text><![CDATA[Table 1: Monthly prices per service]]></text>
+				<property name="pdfua.role" value="Caption"/>
+			</element>
+		</band>
+
+		<band height="60">
+			<!--
+				The table component. With net.sf.jasperreports.components.table.accessible it marks the
+				table, its rows and its cells with the JasperReports tag properties, including row and
+				column spans; the layout extractor reads those. What is added by hand:
+				  - pdfua.role=TH on the text of the first column: the service name is a row header;
+				  - ActualText for the tick and the dash, which mean nothing when read aloud;
+				  - a summary of the table.
+				The table is longer than the page. It stays one table, and the header rows that
+				JasperReports repeats on the next page become artifacts.
+			-->
+			<element kind="component" x="0" y="0" width="495" height="60">
+				<property name="pdfua.table.summary" value="One row per service with its billing unit, whether 24/7 support is included, and the net and gross price per month in euro. The last row holds the totals."/>
+				<component kind="table">
+					<datasetRun subDataset="Prices">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRMapCollectionDataSource($P{PRICES})]]></dataSourceExpression>
+					</datasetRun>
+					<column kind="single" width="195">
+						<columnHeader height="34" rowSpan="2" style="TableHeader">
+							<element kind="staticText" x="4" y="0" width="187" height="34" style="TableHeader" mode="Transparent" vTextAlign="Middle">
+								<text><![CDATA[Service]]></text>
+								<box><pen lineWidth="0.0"/></box>
+							</element>
+						</columnHeader>
+						<tableFooter height="18" style="TableHeader">
+							<element kind="staticText" x="4" y="0" width="187" height="18" style="TableHeader" mode="Transparent" vTextAlign="Middle">
+								<text><![CDATA[Total for all services]]></text>
+								<property name="pdfua.role" value="TH"/>
+								<box><pen lineWidth="0.0"/></box>
+							</element>
+						</tableFooter>
+						<detailCell height="16" style="TableCell">
+							<element kind="textField" x="4" y="0" width="187" height="16" style="TableCell" vTextAlign="Middle">
+								<expression><![CDATA[$F{service}]]></expression>
+								<property name="pdfua.role" value="TH"/>
+								<box><pen lineWidth="0.0"/></box>
+							</element>
+						</detailCell>
+					</column>
+					<column kind="single" width="90">
+						<columnHeader height="34" rowSpan="2" style="TableHeader">
+							<element kind="staticText" x="4" y="0" width="82" height="34" style="TableHeader" mode="Transparent" vTextAlign="Middle">
+								<text><![CDATA[Billing unit]]></text>
+								<box><pen lineWidth="0.0"/></box>
+							</element>
+						</columnHeader>
+						<tableFooter height="18" style="TableHeader"/>
+						<detailCell height="16" style="TableCell">
+							<element kind="textField" x="4" y="0" width="82" height="16" style="TableCell" vTextAlign="Middle">
+								<expression><![CDATA[$F{unit}]]></expression>
+								<box><pen lineWidth="0.0"/></box>
+							</element>
+						</detailCell>
+					</column>
+					<column kind="single" width="60">
+						<columnHeader height="34" rowSpan="2" style="TableHeader">
+							<element kind="staticText" x="2" y="0" width="56" height="34" style="TableHeader" mode="Transparent" hTextAlign="Center" vTextAlign="Middle">
+								<text><![CDATA[24/7 support]]></text>
+								<box><pen lineWidth="0.0"/></box>
+							</element>
+						</columnHeader>
+						<tableFooter height="18" style="TableHeader"/>
+						<detailCell height="16" style="TableCell">
+							<element kind="textField" x="2" y="0" width="56" height="16" style="TableCell" hTextAlign="Center" vTextAlign="Middle">
+								<expression><![CDATA[$F{support} ? "✓" : "–"]]></expression>
+								<propertyExpression name="net.sf.jasperreports.export.pdf.tag.attribute.ActualText"><![CDATA[$F{support} ? "included" : "not included"]]></propertyExpression>
+								<box><pen lineWidth="0.0"/></box>
+							</element>
+						</detailCell>
+					</column>
+					<column kind="group" width="150">
+						<columnHeader height="17" style="TableHeader">
+							<element kind="staticText" x="2" y="0" width="146" height="17" style="TableHeader" mode="Transparent" hTextAlign="Center" vTextAlign="Middle">
+								<text><![CDATA[Price per month in EUR]]></text>
+								<box><pen lineWidth="0.0"/></box>
+							</element>
+						</columnHeader>
+						<column kind="single" width="75">
+							<columnHeader height="17" style="TableHeader">
+								<element kind="staticText" x="2" y="0" width="69" height="17" style="TableHeader" mode="Transparent" hTextAlign="Right" vTextAlign="Middle">
+									<text><![CDATA[Net]]></text>
+									<box><pen lineWidth="0.0"/></box>
+								</element>
+							</columnHeader>
+							<tableFooter height="18" style="TableHeader">
+								<element kind="textField" x="2" y="0" width="69" height="18" style="TableHeader" mode="Transparent" hTextAlign="Right" vTextAlign="Middle" pattern="#,##0.00">
+									<expression><![CDATA[$V{netTotal}]]></expression>
+									<box><pen lineWidth="0.0"/></box>
+								</element>
+							</tableFooter>
+							<detailCell height="16" style="TableCell">
+								<element kind="textField" x="2" y="0" width="69" height="16" style="TableCell" hTextAlign="Right" vTextAlign="Middle" pattern="#,##0.00">
+									<expression><![CDATA[$F{net}]]></expression>
+									<box><pen lineWidth="0.0"/></box>
+								</element>
+							</detailCell>
+						</column>
+						<column kind="single" width="75">
+							<columnHeader height="17" style="TableHeader">
+								<element kind="staticText" x="2" y="0" width="69" height="17" style="TableHeader" mode="Transparent" hTextAlign="Right" vTextAlign="Middle">
+									<text><![CDATA[Gross]]></text>
+									<box><pen lineWidth="0.0"/></box>
+								</element>
+							</columnHeader>
+							<tableFooter height="18" style="TableHeader">
+								<element kind="textField" x="2" y="0" width="69" height="18" style="TableHeader" mode="Transparent" hTextAlign="Right" vTextAlign="Middle" pattern="#,##0.00">
+									<expression><![CDATA[$V{netTotal}.multiply(new java.math.BigDecimal("1.20"))]]></expression>
+									<box><pen lineWidth="0.0"/></box>
+								</element>
+							</tableFooter>
+							<detailCell height="16" style="TableCell">
+								<element kind="textField" x="2" y="0" width="69" height="16" style="TableCell" hTextAlign="Right" vTextAlign="Middle" pattern="#,##0.00">
+									<expression><![CDATA[$F{net}.multiply(new java.math.BigDecimal("1.20"))]]></expression>
+									<box><pen lineWidth="0.0"/></box>
+								</element>
+							</detailCell>
+						</column>
+					</column>
+				</component>
+			</element>
+		</band>
+
+		<band height="26">
+			<!-- A note that belongs to the table. PDF/UA wants every Note to have a unique ID; the
+			     post-processor provides it. -->
+			<element kind="staticText" x="0" y="6" width="495" height="14" style="Small">
+				<text><![CDATA[Note: gross prices include value added tax at 20 percent.]]></text>
+				<property name="pdfua.role" value="Note"/>
+			</element>
+		</band>
+
+		<band height="154">
+			<element kind="staticText" x="0" y="6" width="495" height="22" style="H1">
+				<text><![CDATA[3. Contact]]></text>
+				<property name="pdfua.role" value="H1"/>
+			</element>
+			<element kind="staticText" x="0" y="34" width="495" height="18" style="H2">
+				<text><![CDATA[3.1 How to reach us]]></text>
+				<property name="pdfua.role" value="H2"/>
+			</element>
+			<!-- a web link, an e-mail address (mailto:) and a phone number (tel:) in one paragraph -->
+			<element kind="staticText" x="0" y="56" width="495" height="46" markup="styled">
+				<text><![CDATA[Our support team answers on working days between 09:00 and 17:00. Open a ticket on <a type="Reference" href="https://www.example.com/support"><style forecolor="#0645AD" isUnderline="true">www.example.com/support</style></a>, write to <a type="Reference" href="mailto:support@example.com"><style forecolor="#0645AD" isUnderline="true">support@example.com</style></a> or call <a type="Reference" href="tel:+442079460142"><style forecolor="#0645AD" isUnderline="true">+44 20 7946 0142</style></a>.]]></text>
+			</element>
+			<!-- hyperlink on the whole element: P > Link -->
+			<element kind="textField" x="0" y="106" width="495" height="16" forecolor="#0645AD" underline="true" linkType="Reference">
+				<expression><![CDATA["Read the full terms and conditions of the service"]]></expression>
+				<hyperlinkReferenceExpression><![CDATA["https://www.example.com/terms"]]></hyperlinkReferenceExpression>
+			</element>
+			<!-- A paragraph in another language than the document: the language is stated on the
+			     element, so that a screen reader switches its voice. -->
+			<element kind="staticText" x="0" y="128" width="495" height="16" italic="true">
+				<text><![CDATA[Echipa noastră de asistență vă răspunde și în limba română.]]></text>
+				<property name="net.sf.jasperreports.export.pdf.tag.language" value="ro-RO"/>
+			</element>
+		</band>
+
+		<band height="250">
+			<element kind="staticText" x="0" y="6" width="495" height="22" style="H1">
+				<text><![CDATA[4. Acceptance]]></text>
+				<property name="pdfua.role" value="H1"/>
+			</element>
+			<element kind="staticText" x="0" y="34" width="495" height="32">
+				<text><![CDATA[The agreement enters into force when both parties have signed this summary electronically. Each signature field below is preceded by a statement of what the signature confirms.]]></text>
+			</element>
+			<!-- a text field, because only text fields can be the target of a link inside the document -->
+			<element kind="textField" x="0" y="74" width="495" height="18" style="H2">
+				<expression><![CDATA["4.1 Signatures"]]></expression>
+				<anchorNameExpression><![CDATA["signatures"]]></anchorNameExpression>
+				<property name="pdfua.role" value="H2"/>
+			</element>
+
+			<!-- Customer: visible label above the field + the same statement as the field description -->
+			<element kind="staticText" x="0" y="100" width="235" height="62">
+				<text><![CDATA[Customer signature. By signing in the field below you confirm that you have read this summary and that you accept Service Agreement SA-2026-0042.]]></text>
+			</element>
+			<element kind="rectangle" x="0" y="166" width="235" height="60" backcolor="#F4F7FA">
+				<pen lineWidth="0.75" lineColor="#555555"/>
+				<property name="pdfua.signature.name" value="CustomerSignature"/>
+				<property name="pdfua.signature.description" value="Customer signature. By signing here you confirm that you have read this summary and that you accept Service Agreement SA-2026-0042."/>
+			</element>
+			<element kind="staticText" x="0" y="230" width="235" height="14" style="Small">
+				<text><![CDATA[Signed by the authorised representative of the customer.]]></text>
+			</element>
+
+			<!-- vertical separator between the two signature blocks: artifact -->
+			<element kind="line" x="247" y="100" width="1" height="144">
+				<pen lineWidth="0.75" lineColor="#7A7A7A"/>
+			</element>
+
+			<!-- Provider -->
+			<element kind="staticText" x="260" y="100" width="235" height="62">
+				<text><![CDATA[Provider signature. By signing in the field below Aurora Data Services SRL confirms that it will deliver the service as described in Service Agreement SA-2026-0042.]]></text>
+			</element>
+			<element kind="rectangle" x="260" y="166" width="235" height="60" backcolor="#F4F7FA">
+				<pen lineWidth="0.75" lineColor="#555555"/>
+				<property name="pdfua.signature.name" value="ProviderSignature"/>
+				<property name="pdfua.signature.description" value="Provider signature. By signing here Aurora Data Services SRL confirms that it will deliver the service as described in Service Agreement SA-2026-0042."/>
+			</element>
+			<element kind="staticText" x="260" y="230" width="235" height="14" style="Small">
+				<text><![CDATA[Signed by the authorised representative of the provider.]]></text>
+			</element>
+		</band>
+	</detail>
+
+	<pageFooter height="28">
+		<!-- horizontal rule above the footer: artifact -->
+		<element kind="line" x="0" y="4" width="495" height="1">
+			<pen lineWidth="0.75" lineColor="#7A7A7A"/>
+		</element>
+		<!-- running footer text and page numbers: pagination artifacts -->
+		<element kind="staticText" x="0" y="10" width="300" height="14" style="Small">
+			<text><![CDATA[Aurora Data Services SRL · Confidential]]></text>
+		</element>
+		<element kind="textField" x="335" y="10" width="140" height="14" style="Small" hTextAlign="Right">
+			<expression><![CDATA["Page " + $V{PAGE_NUMBER} + " of"]]></expression>
+		</element>
+		<element kind="textField" x="477" y="10" width="18" height="14" style="Small" evaluationTime="Report">
+			<expression><![CDATA[String.valueOf($V{PAGE_NUMBER})]]></expression>
+		</element>
+	</pageFooter>
+</jasperReport>
