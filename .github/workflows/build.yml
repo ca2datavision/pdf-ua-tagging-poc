@@ -1,0 +1,37 @@
+# Builds the project, runs the tests (including the veraPDF validation of the PDF/UA-1 and the
+# PDF/UA-2 output) and keeps the generated PDFs, so every commit has a downloadable 02-pdfua.pdf
+# to try in PAC, and a 02-pdfua2.pdf.
+name: build
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        java: ['17', '21']
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: ${{ matrix.java }}
+          cache: maven
+      - name: Build, generate the PDFs and verify them
+        run: mvn -B -ntp verify
+      - name: Keep the generated files
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: pdf-output-java-${{ matrix.java }}
+          path: |
+            target/pdf/
+            target/pdf-ua2/
+          if-no-files-found: warn
